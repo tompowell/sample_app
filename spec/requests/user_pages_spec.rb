@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'support/utilities'
 
 describe "User Pages" do
 
@@ -25,6 +26,7 @@ describe "User Pages" do
 				before { click_button submit }
 				it {should have_selector('title', text: 'Sign up')}
 				it {should have_content('error')}
+				it { should_not have_content('Password digest')}
 			end
 		end
 
@@ -46,6 +48,7 @@ describe "User Pages" do
 
 				it {should have_selector('title', text: user.name)}
 				it {should have_selector('div.alert.alert-success', text: 'Welcome')}
+				it {should have_link('Sign out')}
 			end
 		end
 	end
